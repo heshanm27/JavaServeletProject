@@ -63,6 +63,12 @@
       <div class="col s1">12</div>
     </div>
           
+          
+          <form action="/src/main/java/com.item/items.java" method="post">
+          
+          <input type="text" name="itemName" placeholder="itemName">
+          
+          </form>
   
   
       <script type="text/javascript" src="/Oop/js/index.js"></script>
