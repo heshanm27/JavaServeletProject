@@ -12,7 +12,7 @@ public class itemDbUtil {
 
 	public static List<Item> validate(String itemname){
 		
-		ArrayList<Item> item = new ArrayList();
+		ArrayList<Item> item = new ArrayList<Item>();
 		
 		
 		//create dbConnetion 
@@ -35,9 +35,9 @@ public class itemDbUtil {
 	
 			ResultSet rs = st.executeQuery(sql);
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				
-				int id =rs.getInt(1);
+				int id =rs.getInt("Item_id");
 				String code = rs.getString(2);
 				String Name = rs.getString(3);
 				double price =rs.getDouble(4);
@@ -45,15 +45,17 @@ public class itemDbUtil {
 				Item  it = new Item(id,code,Name,price);
 				
 				item.add(it);
+				
 			}
+			
 			
 			
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		return item;
 		
+		return item;
 	}
 	
 	

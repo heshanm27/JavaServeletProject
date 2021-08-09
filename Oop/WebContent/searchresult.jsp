@@ -1,6 +1,10 @@
+<%@page import="org.apache.taglibs.standard.tag.common.xml.ForEachTag"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@page import="java.util.ArrayList"%>
+    <%@page import="com.item.Item"%>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,32 +24,31 @@
 </head>
 <body>
 
-<c:forEach var="it" items="$(itemNames)">
-
-$(it.id)
-$(it.ItemCode)
-$(it.ItemName)
-$(it.Price)
-
-
-</c:forEach>
-
-
-
-
-  <div class="col s12 m7">
-    <h2 class="header">Item1</h2>
+  <%
+  	ArrayList<Item> std = (ArrayList<Item>) request.getAttribute("itemDetails");
+  
+  
+  for(Item s:std){%>
+    
+        
+      <div class="col s12 m7">
+    <h2 class="header"><%=s.getItemID()%></h2>
     <div class="card horizontal">
       <div class="card-stacked">
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
+          <p><%=s.getItemName()%></p>
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
+          <a href="#"><%=s.getPrice()%></a>
         </div>
       </div>
     </div>
   </div>
+      <%}%>
+        
+
+
+
 
 </body>
-</html>
+</html>>

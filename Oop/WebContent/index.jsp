@@ -26,7 +26,7 @@
 
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="item" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
@@ -64,7 +64,7 @@
     </div>
           
           
-          <form action="/src/main/java/com.item/items.java" method="post">
+          <form action="item" method="post">
           
           <input type="text" name="itemName" placeholder="itemName">
           

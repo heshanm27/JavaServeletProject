@@ -23,14 +23,36 @@ public class items extends HttpServlet {
 	
 		String itemName = request.getParameter("itemName");
 		
+
 		
-		List<Item> iteDetails=itemDbUtil.validate(itemName);
+		try {
+		List<Item> itemDetails=itemDbUtil.validate(itemName);
 		
-		request.setAttribute("itemNames", iteDetails);
+		for (Item item : itemDetails) {
+			System.out.println("FromdataBase");
+			System.out.println("<h1>");
+			
+			System.out.print(item.ItemID);
+			System.out.println("</h1>");
+			
+			System.out.print(item.ItemName);
+			System.out.println(item.Price);
+			
+		}
+	
+		request.setAttribute("itemDetails", itemDetails);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("search.jsp");
+	
+		}
+		
+		catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		RequestDispatcher dis = request.getRequestDispatcher("searchresult.jsp");
 
 		dis.forward(request, response);
+	
 	}
 
 }
