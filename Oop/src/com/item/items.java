@@ -18,15 +18,15 @@ public class items extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	
-		String itemName = request.getParameter("itemName");
+
 		
 
 		
 		try {
-		List<Item> itemDetails=itemDbUtil.validate(itemName);
+		List<Item> itemDetails=itemDbUtil.validate();
 		
 		for (Item item : itemDetails) {
 			System.out.println("FromdataBase");
@@ -37,6 +37,7 @@ public class items extends HttpServlet {
 			
 			System.out.print(item.ItemName);
 			System.out.println(item.Price);
+		System.out.println(item.base64Image);
 			
 		}
 	
@@ -49,7 +50,7 @@ public class items extends HttpServlet {
 			
 			e.printStackTrace();
 		}
-		RequestDispatcher dis = request.getRequestDispatcher("searchresult.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
 
 		dis.forward(request, response);
 	

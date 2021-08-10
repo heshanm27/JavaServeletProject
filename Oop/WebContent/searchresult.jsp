@@ -25,9 +25,13 @@
 <body>
 
   <%
+  
+
+	 int k;
   	ArrayList<Item> std = (ArrayList<Item>) request.getAttribute("itemDetails");
   
-  
+  	k=std.size();
+  	out.println("<h1>"+k+"<h1>");
   for(Item s:std){%>
     
         
@@ -40,15 +44,17 @@
         </div>
         <div class="card-action">
           <a href="#"><%=s.getPrice()%></a>
+          
+         
         </div>
       </div>
     </div>
   </div>
-      <%}%>
+      <%}
+      %>
         
 
 
 
-
 </body>
-</html>>
+</html>

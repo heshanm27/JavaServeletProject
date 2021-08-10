@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@page import="java.util.ArrayList"%>
+    <%@page import="com.item.Item"%>
+    <%@page import="java.sql.Blob"%>
+<%@page import="java.io.OutputStream"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,27 +53,51 @@
   
   
     <div class="row">
-      <div class="col s1">1</div>
-      <div class="col s1">2</div>
-      <div class="col s1">3</div>
-      <div class="col s1">4</div>
-      <div class="col s1">5</div>
-      <div class="col s1">6</div>
-      <div class="col s1">7</div>
-      <div class="col s1">8</div>
-      <div class="col s1">9</div>
-      <div class="col s1">10</div>
-      <div class="col s1">11</div>
-      <div class="col s1">12</div>
-    </div>
-          
-          
-          <form action="item" method="post">
-          
-          <input type="text" name="itemName" placeholder="itemName">
-          
-          </form>
+
+ 
+   <% 
+
+    
+  	ArrayList<Item> std = (ArrayList<Item>) request.getAttribute("itemDetails");
+
   
+  for(Item s:std){
+  
+  
+	  
+  
+  %>
+    
+    
+    	 
+ 				
+     <div class="col l2 m6 s6">
+     
+     
+       <div class="card">
+        <div class="card-image">
+     <img src="data:image/jpg;base64,<%=s.getBase64Image()%>" width="240" height="300">
+        </div>
+        <div class="card-content">   
+      	<center><h4><%=s.getItemName()%></h4></center>
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        
+        </div>
+        <div class="card-action">
+          <center><h5><%=s.getPrice()%></h5></center>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+      
+      </div>
+     
+     
+   
+      <%}
+      %>
+  </div>
+        
   
       <script type="text/javascript" src="/Oop/js/index.js"></script>
 </body>

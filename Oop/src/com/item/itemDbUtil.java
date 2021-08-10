@@ -1,16 +1,23 @@
 package com.item;
 
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream; 
+import java.sql.PreparedStatement;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 
 public class itemDbUtil {
 
-	public static List<Item> validate(String itemname){
+	public static List<Item> validate(){
 		
 		ArrayList<Item> item = new ArrayList<Item>();
 		
@@ -31,7 +38,7 @@ public class itemDbUtil {
 			
 			Statement st  = con.createStatement();
 			
-			String sql = "select * from item where itemName ='"+itemname+"'";
+			String sql = "select * from item";
 	
 			ResultSet rs = st.executeQuery(sql);
 			
@@ -41,9 +48,30 @@ public class itemDbUtil {
 				String code = rs.getString(2);
 				String Name = rs.getString(3);
 				double price =rs.getDouble(4);
+				Blob blob  =rs.getBlob(5);
 				
-				Item  it = new Item(id,code,Name,price);
+				 InputStream inputStream = blob.getBinaryStream();
+	             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	             byte[] buffer = new byte[4096];
+	              int bytesRead = -1;
+	                 
+	                while ((bytesRead = inputStream.read(buffer)) != -1) {
+	                    outputStream.write(buffer, 0, bytesRead);                  
+	                }
+	                 
+	                byte[] imageBytes = outputStream.toByteArray();
+	                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 				
+	                inputStream.close();
+	                outputStream.close();
+	                
+	              
+				Item  it = new Item(id,code,Name,price,base64Image);
+				
+				it.setBase64Image(base64Image);
+//				System.out.println("testing");
+//						String testing=it.getBase64Image();
+//						  System.out.println(testing);
 				item.add(it);
 				
 			}
