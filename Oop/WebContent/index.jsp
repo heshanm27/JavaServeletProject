@@ -4,6 +4,7 @@
     <%@page import="com.item.Item"%>
     <%@page import="java.sql.Blob"%>
 <%@page import="java.io.OutputStream"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet"> 
     
-    <link rel="stylesheet" href="/Oop/css/index.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+     
+    <link rel="stylesheet" href="/OOP/cSS/index.css" type="text/css">
 
 
             
@@ -50,6 +53,51 @@
     </div>
   </nav>
   
+  <button id="btn"></button>
+  
+  <div class="row owl">
+   <% 
+
+    
+  	ArrayList<Item> st = (ArrayList<Item>) request.getAttribute("itemDetails");
+
+  
+  for(Item s:st){
+  
+  
+	  
+  
+  %>
+    
+    
+    	 
+ 				
+     <div class="col l2 m6 s6">
+     
+     
+       <div class="card" style="height: 600px">
+        <div class="card-image">
+     <img src="data:image/jpg;base64,<%=s.getBase64Image()%>" width="100%" height="100%">
+        </div>
+        <div class="card-content">   
+      	<center><h4><%=s.getItemName()%></h4></center>
+        
+        </div>
+        <div class="card-action">
+          <center><h5><%=s.getPrice()%></h5></center>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+      
+      </div>
+     
+     
+   
+      <%}
+      %>
+  </div>
+  
+  
   
   
     <div class="row">
@@ -74,14 +122,12 @@
      <div class="col l2 m6 s6">
      
      
-       <div class="card">
+       <div class="card" style="height: 600px">
         <div class="card-image">
-     <img src="data:image/jpg;base64,<%=s.getBase64Image()%>" width="240" height="300">
+     <img src="data:image/jpg;base64,<%=s.getBase64Image()%>" width="100%" height="100%">
         </div>
         <div class="card-content">   
       	<center><h4><%=s.getItemName()%></h4></center>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
         
         </div>
         <div class="card-action">
@@ -97,8 +143,15 @@
       <%}
       %>
   </div>
-        
   
-      <script type="text/javascript" src="/Oop/js/index.js"></script>
+  
+  
+ 
+  
+  
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<script src="jquery.min.js"></script>
+ <script type="text/javascript" src="/OOP/js/index.js"></script>
 </body>
 </html>

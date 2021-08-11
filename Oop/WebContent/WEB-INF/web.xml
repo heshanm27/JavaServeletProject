@@ -19,15 +19,17 @@
 	
          <servlet>
          <servlet-name>item</servlet-name>
-         <servlet-class>com.item.items</servlet-class>       
+         <servlet-class>com.item.items</servlet-class>    
          </servlet>
        
          <servlet-mapping>
          <servlet-name>item</servlet-name>
           <url-pattern>/item</url-pattern>
+          
          </servlet-mapping>
-        
-      
+         
+         
+    
          
 
 </web-app>
