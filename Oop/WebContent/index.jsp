@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
      <%@page import="java.util.ArrayList"%>
     <%@page import="com.item.Item"%>
+    <%@page import="com.item.sliderClass"%>
     <%@page import="java.sql.Blob"%>
 <%@page import="java.io.OutputStream"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -53,7 +54,51 @@
     </div>
   </nav>
   
-  <button id="btn"></button>
+  <button id="btn" hidden=""></button>
+  
+  
+<div class="row slide">
+
+   <% 
+
+    
+  	ArrayList<sliderClass> slide = (ArrayList<sliderClass>) request.getAttribute("sliderDetails");
+
+  
+  for(sliderClass sli:slide){
+  
+  
+	  
+  
+  %>
+    
+    
+    	 
+ 				
+     <div class="col l2 m6 s6">
+     
+     <div class="slider">
+   	   <img src="data:image/jpg;base64,<%=sli.getImg()%>" width="100%" height="100%">
+  </div>
+        
+     
+      
+      </div>
+     
+     
+   
+      <%}
+      %>
+
+  
+  </div>
+  
+  
+
+  
+  
+  
+  
   
   <div class="row owl">
    <% 

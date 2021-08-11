@@ -19,7 +19,8 @@
 	
          <servlet>
          <servlet-name>item</servlet-name>
-         <servlet-class>com.item.items</servlet-class>    
+         <servlet-class>com.item.items</servlet-class>
+             
          </servlet>
        
          <servlet-mapping>
@@ -27,6 +28,8 @@
           <url-pattern>/item</url-pattern>
           
          </servlet-mapping>
+         
+  
          
          
     

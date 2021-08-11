@@ -7,6 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.slider.sliderClass;
+import com.slider.sliderDbUtill;
+
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -28,20 +32,23 @@ public class items extends HttpServlet {
 		try {
 		List<Item> itemDetails=itemDbUtil.validate();
 		
-		for (Item item : itemDetails) {
+		List<sliderClass> SliderDetails=sliderDbUtill.validate();
+		
+		for (sliderClass item : SliderDetails) {
 			System.out.println("FromdataBase");
 			System.out.println("<h1>");
 			
-			System.out.print(item.ItemID);
+			System.out.print(item.getImg()
+					);
 			System.out.println("</h1>");
 			
-			System.out.print(item.ItemName);
-			System.out.println(item.Price);
-		System.out.println(item.base64Image);
+			System.out.print(item.getText());
+			System.out.println(item.getSlideD());
 			
 		}
 	
 		request.setAttribute("itemDetails", itemDetails);
+		request.setAttribute("sliderDetails", SliderDetails);
 		
 	
 		}
